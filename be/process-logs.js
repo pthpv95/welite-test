@@ -11,7 +11,7 @@ const logs = [
   "science fiction 230 pages Ace The Moon Is a Harsh Mistress 200 pages 3.5",
   "Science fiction 120 pages Del Rey The Hitchhiker's Guide to the Galaxy 20pages 3",
   "Comics 150pages Star Wars 35 pages 3.5",
-  "science fiction 230 pages Ace The Moon Is a Harsh Mistress 1 pages 5",
+  "science fiction 230 pages Ace The Moon Is a Harsh Mistress 10 pages 5",
 ];
 
 const PAGES = "pages";
