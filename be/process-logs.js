@@ -11,10 +11,11 @@ const logs = [
   "science fiction 230 pages Ace The Moon Is a Harsh Mistress 200 pages 3.5",
   "Science fiction 120 pages Del Rey The Hitchhiker's Guide to the Galaxy 20pages 3",
   "Comics 150pages Star Wars 35 pages 3.5",
-  "science fiction 230 pages Ace The Moon Is a Harsh Mistress 10 pages 5",
+  "science fiction 230 pages Ace The Moon Is a Harsh Mistress 1 page 5",
 ];
 
 const PAGES = "pages";
+const PAGE = "page";
 
 function getWordBoundsAtPosition(str, position) {
   const isSpace = (c) => /\s/.exec(c);
@@ -47,7 +48,7 @@ function process() {
   }
 
   function getNumberOfPagesRead(item) {
-    const pageIndex = item.lastIndexOf(PAGES);
+    const pageIndex = item.lastIndexOf(PAGE);
     const [start, end] = getWordBoundsAtPosition(item, pageIndex - 1);
     const wordAtPosition = item.substring(start, end);
 
@@ -95,7 +96,7 @@ function process() {
 
     formattedData.push(bookItem);
   });
-
+  console.log("formattedData", formattedData);
   fs.writeFileSync("logs.json", JSON.stringify(formattedData, null, 4));
 
   const bookRates = _.compact(
