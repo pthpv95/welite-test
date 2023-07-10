@@ -41,7 +41,9 @@ const PAGE_SIZE = 5;
 function BookCards({ books }: { books: BookItem[] }) {
   const [page, setPage] = useState<number>(0);
   const [loading, setLoading] = useState(false);
-  const [items, setItems] = useState<BookItem[]>([]);
+  const [items, setItems] = useState<BookItem[]>(
+    [...books].slice(0, PAGE_SIZE)
+  );
 
   useEffect(() => {
     if (page === 0) return;
@@ -55,7 +57,7 @@ function BookCards({ books }: { books: BookItem[] }) {
   }, [page]);
 
   useEffect(() => {
-    // init data when books change
+    // init data when search books change
     setItems([...books].slice(0, PAGE_SIZE));
   }, [books]);
 
@@ -66,6 +68,7 @@ function BookCards({ books }: { books: BookItem[] }) {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
+          // if it hits bottom, increase page
           setPage((page) => page + 1);
         }
       });
