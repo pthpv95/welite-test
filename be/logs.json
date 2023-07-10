@@ -1,0 +1,50 @@
+[
+    {
+        "category": "Comics",
+        "totalPages": 100,
+        "numberOfPages": "40",
+        "rate": 4.5,
+        "title": "Star Wars",
+        "readingRate": 0.4
+    },
+    {
+        "category": "Science fiction",
+        "totalPages": 213,
+        "numberOfPages": "20",
+        "rate": 4,
+        "title": "Del Rey The Hitchhiker's Guide to the Galaxy",
+        "readingRate": 0.09389671361502347
+    },
+    {
+        "category": "science fiction",
+        "totalPages": 230,
+        "numberOfPages": "200",
+        "rate": 3.5,
+        "title": "Ace The Moon Is a Harsh Mistress",
+        "readingRate": 0.8695652173913043
+    },
+    {
+        "category": "Science fiction",
+        "totalPages": 120,
+        "numberOfPages": "20",
+        "rate": 3,
+        "title": "Del Rey The Hitchhiker's Guide to the Galaxy",
+        "readingRate": 0.16666666666666666
+    },
+    {
+        "category": "Comics",
+        "totalPages": 150,
+        "numberOfPages": "35",
+        "rate": 3.5,
+        "title": "Star Wars",
+        "readingRate": 0.23333333333333334
+    },
+    {
+        "category": "science fiction",
+        "totalPages": 230,
+        "numberOfPages": "1",
+        "rate": 5,
+        "title": "Ace The Moon Is a Harsh Mistress",
+        "readingRate": 0.004347826086956522
+    }
+]
