@@ -38,8 +38,15 @@ const BookCard = forwardRef(({ book }: { book: BookItem }, ref: any) => {
 BookCard.displayName = "BookCard";
 
 const PAGE_SIZE = 5;
-function BookCards({ books }: { books: BookItem[] }) {
+function BookCards({
+  books,
+  searchTerm,
+}: {
+  books: BookItem[];
+  searchTerm: string;
+}) {
   const [page, setPage] = useState<number>(0);
+  const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<BookItem[]>(
     [...books].slice(0, PAGE_SIZE)
@@ -50,11 +57,15 @@ function BookCards({ books }: { books: BookItem[] }) {
 
     // handle load more data
     setLoading(true);
-    fetchBooks({ page }).then((res) => {
+    fetchBooks({ page, searchTerm }).then((res) => {
+      if (res.items) {
+        setItems((prev) => [...prev, ...res.items]);
+      } else {
+        setHasMore(false);
+      }
       setLoading(false);
-      setItems((prev) => [...prev, ...res.items]);
     });
-  }, [page]);
+  }, [page, searchTerm]);
 
   useEffect(() => {
     // init data when search books change
@@ -67,14 +78,14 @@ function BookCards({ books }: { books: BookItem[] }) {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && hasMore) {
           // if it hits bottom, increase page
           setPage((page) => page + 1);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading]
+    [loading, hasMore]
   );
 
   return (
