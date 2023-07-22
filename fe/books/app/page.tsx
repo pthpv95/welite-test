@@ -1,6 +1,8 @@
 import SearchBox from "@/app/search-box";
 import { fetchBooks } from "./api";
 import BookCards from "./book-cards";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/toggle-theme";
 
 export default async function Home({
   searchParams,
